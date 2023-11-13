@@ -3,6 +3,7 @@ package com.powerhouseweatherai.sumit.di
 import com.powerhouseweatherai.sumit.data.remote.ApiServices
 import com.powerhouseweatherai.sumit.data.repository.WeatherRepositoryImpl
 import com.powerhouseweatherai.sumit.domain.repository.WeatherRepository
+import com.powerhouseweatherai.sumit.responsehandler.ResponseHandler
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,9 +28,10 @@ class RepositoryModule  {
     @Singleton
     @Provides
     fun provideWeatherRepository(
-        apiServices: ApiServices
+        apiServices: ApiServices,
+        responseHandler: ResponseHandler
     ): WeatherRepository {
-        return WeatherRepositoryImpl(apiServices)
+        return WeatherRepositoryImpl(apiServices,responseHandler)
     }
 
 }

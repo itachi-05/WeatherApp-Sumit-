@@ -7,14 +7,14 @@ import com.powerhouseweatherai.sumit.domain.repository.WeatherRepository
 import com.powerhouseweatherai.sumit.responsehandler.APIResponse
 import com.powerhouseweatherai.sumit.responsehandler.ResponseHandler
 import com.powerhouseweatherai.sumit.responsehandler.map
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
-    private val apiServices: ApiServices
+    private val apiServices: ApiServices,
+    private val responseHandler: ResponseHandler
 ) : WeatherRepository {
 
-    @Inject
-    private lateinit var responseHandler: ResponseHandler
 
     override suspend fun getWeatherData(
         lat: String,

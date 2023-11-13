@@ -39,7 +39,7 @@ class WeatherDetailsFragment : Fragment() {
     }
 
     private fun fetchWeatherData() {
-        weatherDetailsViewModel.getWeatherData("35", "139", "7fe67bf08c80ded756e598d6f8fedaea")
+        weatherDetailsViewModel.getWeatherData("44.34", "10.99", "efa70ac20519053b1f357c9f1e9ebe5c")
     }
 
     private fun bindObservers() {
