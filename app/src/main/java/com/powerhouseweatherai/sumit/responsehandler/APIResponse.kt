@@ -12,3 +12,15 @@ sealed class APIResponse<T>(
     class Loading<T> : APIResponse<T>()
 
 }
+
+fun <X, R> APIResponse<X>.map(transform: (X) -> R): APIResponse<R?> {
+    return when (this) {
+        is APIResponse.Success -> APIResponse.Success(data?.let { transform(it) })
+        is APIResponse.Error -> APIResponse.Error(
+            data = data?.let { transform(it) },
+            message = message,
+            errorBody = errorBody
+        )
+        is APIResponse.Loading -> APIResponse.Loading()
+    }
+}

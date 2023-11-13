@@ -8,8 +8,8 @@ import retrofit2.http.Query
 interface ApiServices {
     @GET("/data/2.5/weather")
     suspend fun getWeather(
-        @Query("lat") lat: Double,
-        @Query("lon") lon: Double,
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
         @Query("appid") appId: String
     ): Response<WeatherDetailResponseDto>
 

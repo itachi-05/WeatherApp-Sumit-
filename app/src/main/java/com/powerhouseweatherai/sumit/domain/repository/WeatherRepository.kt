@@ -6,5 +6,5 @@ import com.powerhouseweatherai.sumit.domain.models.WeatherDetailResponse
 import com.powerhouseweatherai.sumit.responsehandler.APIResponse
 
 interface WeatherRepository {
-   suspend fun getWeatherData(lat: String, lon: String, appId: String):APIResponse<WeatherDetailResponse>
+   suspend fun getWeatherData(lat: String, lon: String, appId: String):APIResponse<WeatherDetailResponse?>
 }
