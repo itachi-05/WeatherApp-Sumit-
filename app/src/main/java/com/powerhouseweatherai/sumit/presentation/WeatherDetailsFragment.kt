@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.powerhouseweatherai.sumit.R
 import com.powerhouseweatherai.sumit.databinding.FragmentWeatherDetailsBinding
+import com.powerhouseweatherai.sumit.responsehandler.APIResponse
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +43,21 @@ class WeatherDetailsFragment : Fragment() {
     }
 
     private fun bindObservers() {
+        weatherDetailsViewModel.weatherData.observe(viewLifecycleOwner) {
+            when (it) {
+                is APIResponse.Success -> {
+                    Toast.makeText(requireContext(), it.data?.name, Toast.LENGTH_SHORT).show()
+                }
+
+                is APIResponse.Error -> {
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                }
+
+                is APIResponse.Loading -> {
+                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
 
     }
 

@@ -17,8 +17,8 @@ class WeatherDetailsViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) : ViewModel() {
 
-    private val _weatherData = MutableLiveData<APIResponse<WeatherDetailResponse>>()
-    val weatherData: LiveData<APIResponse<WeatherDetailResponse>>
+    private val _weatherData = MutableLiveData<APIResponse<WeatherDetailResponse?>>()
+    val weatherData: LiveData<APIResponse<WeatherDetailResponse?>>
         get() = _weatherData
 
     fun getWeatherData(lat: String, lon: String, appId: String) {
