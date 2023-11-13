@@ -1,4 +1,4 @@
-package com.powerhouseweatherai.sumit.data.remote.dto
+package com.powerhouseweatherai.sumit.domain.models
 
 data class WeatherDetailResponse(
     val base: String?,
