@@ -1,4 +1,4 @@
-package com.powerhouseweatherai.sumit.netwrokutils.networkmodule
+package com.powerhouseweatherai.sumit.di
 
 import dagger.Module
 import dagger.Provides
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+class AppModule {
 
 
     @Singleton

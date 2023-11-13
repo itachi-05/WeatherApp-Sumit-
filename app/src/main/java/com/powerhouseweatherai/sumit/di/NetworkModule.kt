@@ -1,5 +1,6 @@
-package com.powerhouseweatherai.sumit.data.networking
+package com.powerhouseweatherai.sumit.di
 
+import com.powerhouseweatherai.sumit.data.remote.ApiServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class LocalNetworkModule  {
+class NetworkModule  {
     @Singleton
     @Provides
     fun provideNetworkOperations(

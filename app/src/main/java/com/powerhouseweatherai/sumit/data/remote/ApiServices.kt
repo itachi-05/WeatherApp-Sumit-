@@ -1,4 +1,4 @@
-package com.powerhouseweatherai.sumit.data.networking
+package com.powerhouseweatherai.sumit.data.remote
 
 import retrofit2.Response
 import retrofit2.http.Body

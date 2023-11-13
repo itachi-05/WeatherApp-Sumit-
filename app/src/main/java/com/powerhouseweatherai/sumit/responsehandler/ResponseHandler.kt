@@ -1,4 +1,4 @@
-package com.powerhouseweatherai.sumit.netwrokutils.responsehandler
+package com.powerhouseweatherai.sumit.responsehandler
 
 
 import android.content.Context

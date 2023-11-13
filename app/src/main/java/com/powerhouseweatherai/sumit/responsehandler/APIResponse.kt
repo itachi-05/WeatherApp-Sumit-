@@ -1,4 +1,4 @@
-package com.powerhouseweatherai.sumit.netwrokutils.responsehandler
+package com.powerhouseweatherai.sumit.responsehandler
 
 
 sealed class APIResponse<T>(
