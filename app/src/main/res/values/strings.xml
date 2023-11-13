@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PowerHouseWeatherAi</string>
+    <string name="text_something_went_wrong_error">Something went wrong. Please try again later.</string>
 </resources>
