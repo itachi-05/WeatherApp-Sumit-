@@ -1,6 +1,8 @@
 package com.powerhouseweatherai.sumit.di
 
 import com.powerhouseweatherai.sumit.data.remote.ApiServices
+import com.powerhouseweatherai.sumit.data.repository.WeatherRepositoryImpl
+import com.powerhouseweatherai.sumit.domain.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +22,14 @@ class RepositoryModule  {
         okHttpClient: OkHttpClient
     ): ApiServices {
         return retrofitBuilder.client(okHttpClient).build().create(ApiServices::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideWeatherRepository(
+        apiServices: ApiServices
+    ): WeatherRepository {
+        return WeatherRepositoryImpl(apiServices)
     }
 
 }
