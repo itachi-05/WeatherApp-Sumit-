@@ -22,4 +22,7 @@ class NetworkModule  {
         return retrofitBuilder.client(okHttpClient).build().create(ApiServices::class.java)
     }
 
+
+
+
 }
