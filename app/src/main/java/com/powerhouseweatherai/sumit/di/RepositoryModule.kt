@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule  {
+class RepositoryModule  {
     @Singleton
     @Provides
     fun provideNetworkOperations(
@@ -21,8 +21,5 @@ class NetworkModule  {
     ): ApiServices {
         return retrofitBuilder.client(okHttpClient).build().create(ApiServices::class.java)
     }
-
-
-
 
 }
