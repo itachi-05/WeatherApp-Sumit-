@@ -61,7 +61,7 @@ class WeatherDetailsViewModel @Inject constructor(
             val combinedResult = if (successList.isNotEmpty()) {
                 APIResponse.Success(successList)
             } else {
-                APIResponse.Error(errorList.joinToString(", "))
+                APIResponse.Error(errorList[0])
             }
             _weatherDataList.postValue(combinedResult)
         }

@@ -45,7 +45,7 @@ class WeatherRepositoryImpl @Inject constructor(
                 it.toWeatherDetailResponse()
             }
         }
-        return APIResponse.Success(null)
+        return APIResponse.Error("No data found")
     }
 
 

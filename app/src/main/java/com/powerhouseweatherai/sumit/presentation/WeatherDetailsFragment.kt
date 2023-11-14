@@ -118,11 +118,13 @@ class WeatherDetailsFragment : Fragment(), ConnectivityChangeListener {
     }
 
     private fun handleRvWeather(data: MutableList<WeatherDetailResponse?>?) {
-        val weatherDetailsAdapter = WeatherDetailsAdapter(data)
-        with(binding.rvWeatherDetails) {
-            this.adapter = weatherDetailsAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
+        data?.let {
+            val weatherDetailsAdapter = WeatherDetailsAdapter(data)
+            with(binding.rvWeatherDetails) {
+                this.adapter = weatherDetailsAdapter
+                layoutManager = LinearLayoutManager(requireContext())
+            }
+        } ?: kotlin.run { Toast.makeText(requireContext(), "No Data", Toast.LENGTH_SHORT).show() }
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -142,7 +144,6 @@ class WeatherDetailsFragment : Fragment(), ConnectivityChangeListener {
     }
 
     override fun onNetworkDisconnected() {
-        fetchWeatherData(fromServer = false)
         Toast.makeText(requireContext(), "No Internet", Toast.LENGTH_SHORT).show()
     }
 
