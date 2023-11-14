@@ -5,6 +5,7 @@ plugins {
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
 }
 android {
     namespace = "com.powerhouseweatherai.sumit"
@@ -87,7 +88,7 @@ dependencies {
     val googleRoomDb = "2.5.2"
     implementation("androidx.room:room-runtime:$googleRoomDb")
     annotationProcessor("androidx.room:room-compiler:$googleRoomDb")
-    kapt("androidx.room:room-compiler:$googleRoomDb")
+    ksp("androidx.room:room-compiler:$googleRoomDb")
     implementation("androidx.room:room-ktx:$googleRoomDb")
 
 }
