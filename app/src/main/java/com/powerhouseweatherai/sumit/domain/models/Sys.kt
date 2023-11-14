@@ -2,8 +2,8 @@ package com.powerhouseweatherai.sumit.domain.models
 
 data class Sys(
     val country: String?,
-    val id: Int?,
-    val sunrise: Int?,
-    val sunset: Int?,
-    val type: Int?
+    val id: Long?,
+    val sunrise: Long?,
+    val sunset: Long?,
+    val type: Long?
 )
