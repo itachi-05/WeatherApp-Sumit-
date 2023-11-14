@@ -16,6 +16,7 @@
         <CheckedTextView
             android:id="@+id/tvCityName"
             android:layout_width="wrap_content"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             tools:text="Delhi" />
 
@@ -23,6 +24,7 @@
             android:id="@+id/tvTemp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:layout_gravity="end"
             android:textAlignment="viewEnd"
             tools:text="100k" />
