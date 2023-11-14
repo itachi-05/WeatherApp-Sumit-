@@ -1,5 +1,8 @@
 package com.powerhouseweatherai.sumit.data.repository
 
+import com.powerhouseweatherai.sumit.data.local.WeatherDetailEntity
+import com.powerhouseweatherai.sumit.data.local.WeatherDetailsDao
+import com.powerhouseweatherai.sumit.data.mapper.toWeatherDetailEntity
 import com.powerhouseweatherai.sumit.data.mapper.toWeatherDetailResponse
 import com.powerhouseweatherai.sumit.data.remote.ApiServices
 import com.powerhouseweatherai.sumit.domain.models.WeatherDetailResponse
@@ -12,7 +15,8 @@ import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
     private val apiServices: ApiServices,
-    private val responseHandler: ResponseHandler
+    private val responseHandler: ResponseHandler,
+    private val weatherDetailsDao: WeatherDetailsDao
 ) : WeatherRepository {
 
 
@@ -23,6 +27,9 @@ class WeatherRepositoryImpl @Inject constructor(
     ): APIResponse<WeatherDetailResponse?> {
         val result = responseHandler.callAPI {
             apiServices.getWeather(lat, lon, appId)
+        }
+        if (result is APIResponse.Success) {
+            weatherDetailsDao.insert(result.data?.toWeatherDetailEntity()!!)
         }
 
         return result.map {

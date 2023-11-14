@@ -7,5 +7,5 @@ data class WeatherDetailResponseDto(
     val main: Main?,
     val name: String?,
     val visibility: Long?,
-    val weather: List<Weather?>?,
+    val weather: List<Weather>?,
 )

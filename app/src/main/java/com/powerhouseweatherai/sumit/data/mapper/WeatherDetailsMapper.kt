@@ -1,5 +1,8 @@
 package com.powerhouseweatherai.sumit.data.mapper
 
+import androidx.room.ColumnInfo
+import androidx.room.PrimaryKey
+import com.powerhouseweatherai.sumit.data.local.WeatherDetailEntity
 import com.powerhouseweatherai.sumit.data.remote.dto.Coord
 import com.powerhouseweatherai.sumit.data.remote.dto.Main
 import com.powerhouseweatherai.sumit.data.remote.dto.Weather
@@ -31,6 +34,16 @@ private fun Main.toMain() = com.powerhouseweatherai.sumit.domain.models.Main(
 
 private fun Weather.toWeather() = com.powerhouseweatherai.sumit.domain.models.Weather(
     description = description,
+)
+
+fun WeatherDetailResponseDto.toWeatherDetailEntity()= WeatherDetailEntity(
+    id=id.toString(),
+    name=name,
+    visibility=visibility,
+    coord=coord,
+    dt=dt,
+    main=main,
+    weather=weather
 )
 
 

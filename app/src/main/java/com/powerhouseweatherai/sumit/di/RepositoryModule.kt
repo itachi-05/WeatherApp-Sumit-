@@ -1,5 +1,6 @@
 package com.powerhouseweatherai.sumit.di
 
+import com.powerhouseweatherai.sumit.data.local.WeatherDetailsDatabase
 import com.powerhouseweatherai.sumit.data.remote.ApiServices
 import com.powerhouseweatherai.sumit.data.repository.WeatherRepositoryImpl
 import com.powerhouseweatherai.sumit.domain.repository.WeatherRepository
@@ -29,9 +30,10 @@ class RepositoryModule  {
     @Provides
     fun provideWeatherRepository(
         apiServices: ApiServices,
-        responseHandler: ResponseHandler
+        responseHandler: ResponseHandler,
+        weatherDetailsDatabase: WeatherDetailsDatabase
     ): WeatherRepository {
-        return WeatherRepositoryImpl(apiServices,responseHandler)
+        return WeatherRepositoryImpl(apiServices,responseHandler,weatherDetailsDatabase.weatherDetailsDao())
     }
 
 }
