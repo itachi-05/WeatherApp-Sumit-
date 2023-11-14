@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.powerhouseweatherai.sumit.R
 import com.powerhouseweatherai.sumit.databinding.FragmentWeatherDetailsBinding
+import com.powerhouseweatherai.sumit.domain.models.WeatherDetailResponse
+import com.powerhouseweatherai.sumit.presentation.adapter.WeatherDetailsAdapter
 import com.powerhouseweatherai.sumit.responsehandler.APIResponse
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,6 +38,7 @@ class WeatherDetailsFragment : Fragment() {
         bindObservers()
         bindViews()
     }
+
     private fun handleToolbar() {
         (activity as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.actionToolbarHomePage.title = resources.getString(R.string.weather_forecast)
@@ -79,21 +83,43 @@ class WeatherDetailsFragment : Fragment() {
         weatherDetailsViewModel.weatherDataList.observe(viewLifecycleOwner) {
             when (it) {
                 is APIResponse.Success -> {
-                    Toast.makeText(requireContext(), "Success ${it.data?.size}", Toast.LENGTH_SHORT)
-                        .show()
+                    showLoading(false)
+                    handleRvWeather(it.data)
                 }
 
                 is APIResponse.Error -> {
+                    showLoading(false)
                     Toast.makeText(requireContext(), "Error ${it.message}", Toast.LENGTH_SHORT)
                         .show()
                 }
 
                 is APIResponse.Loading -> {
+                    showLoading(true)
                     Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
+    }
+
+    private fun handleRvWeather(data: MutableList<WeatherDetailResponse?>?) {
+        val weatherDetailsAdapter = WeatherDetailsAdapter(data)
+        with(binding.rvWeatherDetails) {
+            this.adapter = weatherDetailsAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.shimmerFrameLayoutHomePage.visibility = View.VISIBLE
+            binding.shimmerFrameLayoutHomePage.startShimmer()
+            binding.rvWeatherDetails.visibility = View.GONE
+        } else {
+            binding.shimmerFrameLayoutHomePage.stopShimmer()
+            binding.shimmerFrameLayoutHomePage.visibility = View.GONE
+            binding.rvWeatherDetails.visibility = View.VISIBLE
+        }
     }
 
 }

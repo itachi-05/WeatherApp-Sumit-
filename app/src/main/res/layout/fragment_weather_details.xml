@@ -309,7 +309,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvHomePageMessages"
+            android:id="@+id/rvWeatherDetails"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/home_page_message_item" />

@@ -7,7 +7,7 @@ import com.powerhouseweatherai.sumit.databinding.HomePageMessageItemBinding
 import com.powerhouseweatherai.sumit.domain.models.WeatherDetailResponse
 
 class WeatherDetailsAdapter(
-    private val messageList: List<WeatherDetailResponse>,
+    private val messageList: MutableList<WeatherDetailResponse?>?,
 ) : RecyclerView.Adapter<WeatherDetailsAdapter.WeatherDetailsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherDetailsViewHolder {
@@ -20,19 +20,19 @@ class WeatherDetailsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return messageList.size
+        return messageList?.size?:0
     }
 
 
     override fun onBindViewHolder(holder: WeatherDetailsViewHolder, position: Int) {
-        holder.bind(messageList[position], position)
+        messageList?.get(position)?.let { holder.bind(it, position) }
     }
 
     inner class WeatherDetailsViewHolder(private val binding: HomePageMessageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(detailsData: WeatherDetailResponse, position: Int) {
             with(binding) {
-
+                tvUserName.text = detailsData.name
             }
 
         }
