@@ -43,7 +43,7 @@ class WeatherDetailsFragment : Fragment() {
         val listOfLatLonForSpecifiedCities = getListOfLatLonForSpecifiedCities()
         weatherDetailsViewModel.getWeatherDataList(
             list = listOfLatLonForSpecifiedCities,
-            appId = "efa70ac20519053b1f357c9f1e9ebe5c"
+            appId = "62a2e620e6f6278322c50d50143ba2ee"
         )
     }
 
@@ -66,11 +66,13 @@ class WeatherDetailsFragment : Fragment() {
         weatherDetailsViewModel.weatherDataList.observe(viewLifecycleOwner) {
             when (it) {
                 is APIResponse.Success -> {
-                     Toast.makeText(requireContext(), "Success ${it.data?.size}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Success ${it.data?.size}", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
                 is APIResponse.Error -> {
-                     Toast.makeText(requireContext(), "Error ${it.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Error ${it.message}", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
                 is APIResponse.Loading -> {
