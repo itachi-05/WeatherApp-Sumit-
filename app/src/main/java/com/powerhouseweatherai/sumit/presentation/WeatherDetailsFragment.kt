@@ -95,7 +95,6 @@ class WeatherDetailsFragment : Fragment() {
 
                 is APIResponse.Loading -> {
                     showLoading(true)
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
                 }
             }
         }
