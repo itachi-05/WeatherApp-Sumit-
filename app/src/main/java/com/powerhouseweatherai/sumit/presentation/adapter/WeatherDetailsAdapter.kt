@@ -35,7 +35,7 @@ class WeatherDetailsAdapter(
                 tvCityName.text = detailsData.name
                 tvTemp.text = detailsData.main?.temp.toString()+"K"
                 tvDescription.text = detailsData.weather?.get(0)?.description
-                tvVisibility.text = "Visibility: " + detailsData.visibility.toString()
+                tvVisibility.text = "Visibility: " + detailsData.visibility.toString() + "m"
             }
 
         }
