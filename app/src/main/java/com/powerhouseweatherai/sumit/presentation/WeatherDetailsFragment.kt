@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import com.powerhouseweatherai.sumit.R
 import com.powerhouseweatherai.sumit.databinding.FragmentWeatherDetailsBinding
@@ -30,11 +31,23 @@ class WeatherDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        handleToolbar()
         bindObservers()
         bindViews()
     }
+    private fun handleToolbar() {
+        (activity as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
+        binding.actionToolbarHomePage.title = resources.getString(R.string.weather_forecast)
+        binding.actionToolbarHomePage.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
+    }
 
     private fun bindViews() {
+        binding.swipeRefreshHomePageMessages.setOnRefreshListener {
+            fetchWeatherData()
+            binding.swipeRefreshHomePageMessages.isRefreshing = false
+        }
         fetchWeatherData()
     }
 

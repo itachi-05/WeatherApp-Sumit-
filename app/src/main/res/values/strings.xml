@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">PowerHouseWeatherAi</string>
     <string name="text_something_went_wrong_error">Something went wrong. Please try again later.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="weather_forecast">Weather Forecast</string>
 </resources>
