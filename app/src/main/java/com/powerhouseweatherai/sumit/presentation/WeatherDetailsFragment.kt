@@ -1,5 +1,7 @@
 package com.powerhouseweatherai.sumit.presentation
 
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.powerhouseweatherai.sumit.R
+import com.powerhouseweatherai.sumit.connectivitychecker.ConnectivityChangeListener
+import com.powerhouseweatherai.sumit.connectivitychecker.NetworkChangeReceiver
 import com.powerhouseweatherai.sumit.databinding.FragmentWeatherDetailsBinding
 import com.powerhouseweatherai.sumit.domain.models.WeatherDetailResponse
 import com.powerhouseweatherai.sumit.presentation.adapter.WeatherDetailsAdapter
@@ -17,12 +21,13 @@ import com.powerhouseweatherai.sumit.responsehandler.APIResponse
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WeatherDetailsFragment : Fragment() {
+class WeatherDetailsFragment : Fragment(), ConnectivityChangeListener {
 
     private var _binding: FragmentWeatherDetailsBinding? = null
     private val binding get() = _binding!!
 
     private val weatherDetailsViewModel: WeatherDetailsViewModel by viewModels()
+    private val networkChangeReceiver = NetworkChangeReceiver(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,9 +39,19 @@ class WeatherDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        registerReceiver()
         handleToolbar()
         bindObservers()
         bindViews()
+    }
+
+    private fun registerReceiver() {
+        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        requireActivity().registerReceiver(networkChangeReceiver, filter)
+    }
+
+    private fun unregisterReceiver() {
+        requireActivity().unregisterReceiver(networkChangeReceiver)
     }
 
     private fun handleToolbar() {
@@ -120,6 +135,20 @@ class WeatherDetailsFragment : Fragment() {
             binding.shimmerFrameLayoutWeatherDetailsPage.visibility = View.GONE
             binding.rvWeatherDetails.visibility = View.VISIBLE
         }
+    }
+
+    override fun onNetworkConnected() {
+        Toast.makeText(requireContext(), "Network Connected", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onNetworkDisconnected() {
+        Toast.makeText(requireContext(), "Network Disconnected", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        unregisterReceiver()
+        _binding = null
     }
 
 }
