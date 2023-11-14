@@ -10,6 +10,10 @@ interface WeatherDetailsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(weatherDetail: WeatherDetailEntity)
 
-    @Query("SELECT * FROM weather_details")
-    fun getWeatherDetail(): WeatherDetailEntity?
+    @Query("SELECT * FROM weather_details WHERE id = :id")
+    suspend fun getWeatherDetail(id:String): WeatherDetailEntity?
+
+
+    @Query("DELETE FROM weather_details")
+    suspend fun clearWeatherDetails()
 }

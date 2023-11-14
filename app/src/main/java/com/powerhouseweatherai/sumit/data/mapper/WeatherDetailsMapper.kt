@@ -36,14 +36,14 @@ private fun Weather.toWeather() = com.powerhouseweatherai.sumit.domain.models.We
     description = description,
 )
 
-fun WeatherDetailResponseDto.toWeatherDetailEntity()= WeatherDetailEntity(
-    id=id.toString(),
-    name=name,
-    visibility=visibility,
-    coord=coord,
-    dt=dt,
-    main=main,
-    weather=weather
+fun WeatherDetailResponseDto.toWeatherDetailEntity() = WeatherDetailEntity(
+    id = coord?.lat.toString() + coord?.lon.toString(),
+    name = name,
+    visibility = visibility,
+    coord = coord,
+    dt = dt,
+    main = main,
+    weather = weather
 )
 
 
