@@ -25,17 +25,12 @@ private fun Coord.toCoord() = com.powerhouseweatherai.sumit.domain.models.Coord(
 )
 
 private fun Main.toMain() = com.powerhouseweatherai.sumit.domain.models.Main(
-
     temp = temp
-
 )
 
 
 private fun Weather.toWeather() = com.powerhouseweatherai.sumit.domain.models.Weather(
     description = description,
-    icon = icon,
-    id = id,
-    main = main
 )
 
 
