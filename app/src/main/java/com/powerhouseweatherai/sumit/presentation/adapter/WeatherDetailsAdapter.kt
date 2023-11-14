@@ -36,10 +36,6 @@ class WeatherDetailsAdapter(
             }
 
         }
-
-
     }
-
-
 }
 
