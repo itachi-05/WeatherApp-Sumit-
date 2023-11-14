@@ -8,5 +8,4 @@ data class WeatherDetailResponseDto(
     val name: String?,
     val visibility: Long?,
     val weather: List<Weather?>?,
-
 )

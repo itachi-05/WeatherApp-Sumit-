@@ -25,14 +25,9 @@ private fun Coord.toCoord() = com.powerhouseweatherai.sumit.domain.models.Coord(
 )
 
 private fun Main.toMain() = com.powerhouseweatherai.sumit.domain.models.Main(
-    feels_like = feels_like,
-    humidity = humidity,
-    pressure = pressure,
-    temp = temp,
-    temp_max = temp_max,
-    temp_min = temp_min,
-    grnd_level = grnd_level,
-    sea_level = sea_level
+
+    temp = temp
+
 )
 
 

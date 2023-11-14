@@ -83,4 +83,11 @@ dependencies {
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
+    //room database
+    val googleRoomDb = "2.5.2"
+    implementation("androidx.room:room-runtime:$googleRoomDb")
+    annotationProcessor("androidx.room:room-compiler:$googleRoomDb")
+    kapt("androidx.room:room-compiler:$googleRoomDb")
+    implementation("androidx.room:room-ktx:$googleRoomDb")
+
 }
