@@ -47,3 +47,12 @@ fun WeatherDetailResponseDto.toWeatherDetailEntity() = WeatherDetailEntity(
 )
 
 
+fun WeatherDetailEntity.toWeatherDetailResponse() = WeatherDetailResponse(
+    coord = coord?.toCoord(),
+    main = main?.toMain(),
+    name = name,
+    visibility = visibility,
+    weather = weather?.map { it?.toWeather() },
+    dt = dt,
+    id = 0L
+)

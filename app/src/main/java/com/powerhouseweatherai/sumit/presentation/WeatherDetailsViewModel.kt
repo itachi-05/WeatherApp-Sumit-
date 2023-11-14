@@ -26,7 +26,7 @@ class WeatherDetailsViewModel @Inject constructor(
         get() = _weatherDataList
 
 
-    fun getWeatherDataList(list: List<Pair<Double, Double>>, appId: String) {
+    fun getWeatherDataList(list: List<Pair<Double, Double>>, appId: String, fromServer: Boolean) {
 
         viewModelScope.launch(Dispatchers.IO) {
             _weatherDataList.postValue(APIResponse.Loading())
@@ -37,7 +37,8 @@ class WeatherDetailsViewModel @Inject constructor(
                     weatherRepository.getWeatherData(
                         pair.first.toString(),
                         pair.second.toString(),
-                        appId
+                        appId,
+                        fromServer = fromServer
                     )
                 }
             }
