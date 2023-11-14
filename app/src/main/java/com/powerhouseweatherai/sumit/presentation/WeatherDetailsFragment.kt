@@ -138,11 +138,12 @@ class WeatherDetailsFragment : Fragment(), ConnectivityChangeListener {
     }
 
     override fun onNetworkConnected() {
-        Toast.makeText(requireContext(), "Network Connected", Toast.LENGTH_SHORT).show()
+        fetchWeatherData(fromServer = true)
     }
 
     override fun onNetworkDisconnected() {
-        Toast.makeText(requireContext(), "Network Disconnected", Toast.LENGTH_SHORT).show()
+        fetchWeatherData(fromServer = false)
+        Toast.makeText(requireContext(), "No Internet", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {
