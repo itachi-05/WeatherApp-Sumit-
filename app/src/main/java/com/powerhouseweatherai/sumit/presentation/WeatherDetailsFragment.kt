@@ -112,12 +112,12 @@ class WeatherDetailsFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding.shimmerFrameLayoutHomePage.visibility = View.VISIBLE
-            binding.shimmerFrameLayoutHomePage.startShimmer()
+            binding.shimmerFrameLayoutWeatherDetailsPage.visibility = View.VISIBLE
+            binding.shimmerFrameLayoutWeatherDetailsPage.startShimmer()
             binding.rvWeatherDetails.visibility = View.GONE
         } else {
-            binding.shimmerFrameLayoutHomePage.stopShimmer()
-            binding.shimmerFrameLayoutHomePage.visibility = View.GONE
+            binding.shimmerFrameLayoutWeatherDetailsPage.stopShimmer()
+            binding.shimmerFrameLayoutWeatherDetailsPage.visibility = View.GONE
             binding.rvWeatherDetails.visibility = View.VISIBLE
         }
     }

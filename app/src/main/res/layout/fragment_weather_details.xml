@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerFrameLayoutHomePage"
+        android:id="@+id/shimmerFrameLayoutWeatherDetailsPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">

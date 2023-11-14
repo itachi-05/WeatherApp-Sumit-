@@ -32,7 +32,10 @@ class WeatherDetailsAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(detailsData: WeatherDetailResponse, position: Int) {
             with(binding) {
-                tvUserName.text = detailsData.name
+                tvCityName.text = detailsData.name
+                tvTemp.text = detailsData.main?.temp.toString()
+                tvDescription.text = detailsData.weather?.get(0)?.description
+                tvVisibility.text = detailsData.visibility.toString()
             }
 
         }

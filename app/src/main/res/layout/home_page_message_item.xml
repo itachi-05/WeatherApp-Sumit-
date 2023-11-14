@@ -14,27 +14,27 @@
         android:orientation="horizontal">
 
         <CheckedTextView
-            android:id="@+id/tvUserName"
+            android:id="@+id/tvCityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Sumit Kumar" />
+            tools:text="Delhi" />
 
         <CheckedTextView
-            android:id="@+id/tvThreadId"
+            android:id="@+id/tvTemp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:textAlignment="viewEnd"
-            tools:text="Thread: 24" />
+            tools:text="100k" />
     </LinearLayout>
 
     <CheckedTextView
-        android:id="@+id/tvMessage"
+        android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="16sp"
-        tools:text="Candidate is Sumit Kumar, payment system received via JUSPAY platform" />
+        tools:text="feels like hot" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,12 +43,12 @@
         android:orientation="horizontal">
 
         <CheckedTextView
-            android:id="@+id/tvTime"
+            android:id="@+id/tvVisibility"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:textAlignment="viewEnd"
-            tools:text="11:40 AM : Nov 5, 2023" />
+            tools:text="Visibility: 100" />
     </LinearLayout>
 
 
