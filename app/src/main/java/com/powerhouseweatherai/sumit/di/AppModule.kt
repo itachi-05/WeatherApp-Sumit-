@@ -1,8 +1,12 @@
 package com.powerhouseweatherai.sumit.di
 
+import android.content.Context
+import androidx.room.Room
+import com.powerhouseweatherai.sumit.data.local.WeatherDetailsDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,6 +37,13 @@ class AppModule {
         builder.addInterceptor(loggingInterceptor)
 
         return builder.build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppDatabase(@ApplicationContext context: Context): WeatherDetailsDatabase {
+        return Room.databaseBuilder(context, WeatherDetailsDatabase::class.java, "powerhouseai-weather-room-db")
+            .build()
     }
 
     companion object {
