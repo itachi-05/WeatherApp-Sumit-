@@ -49,18 +49,19 @@ class WeatherDetailsFragment : Fragment() {
 
     private fun bindViews() {
         binding.swipeRefreshHomePageMessages.setOnRefreshListener {
-            fetchWeatherData()
+            fetchWeatherData(fromServer = true)
             binding.swipeRefreshHomePageMessages.isRefreshing = false
         }
-        fetchWeatherData()
+        fetchWeatherData(fromServer = false)
     }
 
 
-    private fun fetchWeatherData() {
+    private fun fetchWeatherData(fromServer: Boolean) {
         val listOfLatLonForSpecifiedCities = getListOfLatLonForSpecifiedCities()
         weatherDetailsViewModel.getWeatherDataList(
             list = listOfLatLonForSpecifiedCities,
-            appId = "62a2e620e6f6278322c50d50143ba2ee"
+            appId = "62a2e620e6f6278322c50d50143ba2ee",
+            fromServer = fromServer
         )
     }
 
