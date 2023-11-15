@@ -1,5 +1,7 @@
 package com.powerhouseweatherai.sumit.data.repository
 
+import android.content.Context
+import com.powerhouseweatherai.sumit.R
 import com.powerhouseweatherai.sumit.data.local.WeatherDetailsDao
 import com.powerhouseweatherai.sumit.data.mapper.toWeatherDetailEntity
 import com.powerhouseweatherai.sumit.data.mapper.toWeatherDetailResponse
@@ -15,7 +17,8 @@ import javax.inject.Inject
 class WeatherRepositoryImpl @Inject constructor(
     private val apiServices: ApiServices,
     private val responseHandler: ResponseHandler,
-    private val weatherDetailsDao: WeatherDetailsDao
+    private val weatherDetailsDao: WeatherDetailsDao,
+    private val context: Context
 ) : WeatherRepository {
 
 
@@ -45,7 +48,7 @@ class WeatherRepositoryImpl @Inject constructor(
                 it.toWeatherDetailResponse()
             }
         }
-        return APIResponse.Error("No data found")
+        return APIResponse.Error(context.getString(R.string.no_data_found))
     }
 
 

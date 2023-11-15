@@ -105,7 +105,7 @@ class WeatherDetailsFragment : Fragment(), ConnectivityChangeListener {
 
                 is APIResponse.Error -> {
                     showLoading(false)
-                    Toast.makeText(requireContext(), "Error ${it.message}", Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT)
                         .show()
                 }
 
@@ -124,7 +124,7 @@ class WeatherDetailsFragment : Fragment(), ConnectivityChangeListener {
                 this.adapter = weatherDetailsAdapter
                 layoutManager = LinearLayoutManager(requireContext())
             }
-        } ?: kotlin.run { Toast.makeText(requireContext(), "No Data", Toast.LENGTH_SHORT).show() }
+        } ?: kotlin.run { Toast.makeText(requireContext(), resources.getString(R.string.no_data_found), Toast.LENGTH_SHORT).show() }
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -144,7 +144,7 @@ class WeatherDetailsFragment : Fragment(), ConnectivityChangeListener {
     }
 
     override fun onNetworkDisconnected() {
-        Toast.makeText(requireContext(), "No Internet", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), resources.getString(R.string.no_internet), Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

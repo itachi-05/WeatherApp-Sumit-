@@ -2,4 +2,6 @@
     <string name="app_name">PowerHouseWeatherAi</string>
     <string name="text_something_went_wrong_error">Something went wrong. Please try again later.</string>
     <string name="weather_forecast">Weather Forecast</string>
+    <string name="no_internet">No Internet</string>
+    <string name="no_data_found">No data found</string>
 </resources>
