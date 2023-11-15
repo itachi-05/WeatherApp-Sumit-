@@ -33,9 +33,9 @@ class WeatherDetailsAdapter(
         fun bind(detailsData: WeatherDetailResponse, position: Int) {
             with(binding) {
                 tvCityName.text = detailsData.name
-                tvTemp.text = detailsData.main?.temp.toString()+"K"
+                tvTemp.text = "${detailsData.main?.temp.toString()}K"
                 tvDescription.text = detailsData.weather?.get(0)?.description
-                tvVisibility.text = "Visibility: " + detailsData.visibility.toString() + "m"
+                tvVisibility.text = "Visibility: ${detailsData.visibility.toString()}m"
             }
 
         }
