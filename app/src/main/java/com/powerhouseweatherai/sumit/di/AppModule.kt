@@ -46,7 +46,6 @@ class AppModule {
             .build()
     }
 
-
     companion object {
         const val apiBaseUrl = "https://api.openweathermap.org/"
     }
